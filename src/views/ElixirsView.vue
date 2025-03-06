@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>4 Houses</h1>
+    <h1>145 Elixirs</h1>
   </div>
 </template>

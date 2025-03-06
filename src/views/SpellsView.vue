@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>About page</h1>
+    <h1>306 Spells</h1>
   </div>
 </template>
