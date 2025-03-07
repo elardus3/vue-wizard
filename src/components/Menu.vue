@@ -13,6 +13,7 @@ import { RouterLink } from "vue-router";
 <style scoped>
 nav {
   width: 100%;
+  margin-top: 1rem;
   text-align: center;
 }
 

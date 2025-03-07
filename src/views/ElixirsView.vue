@@ -10,7 +10,7 @@ const { isPending, isError, data, error } = useQuery({
     console.log(json);
     return json;
     // return response.json();  // TODO after card slots
-  },
+  }
 });
 </script>
 

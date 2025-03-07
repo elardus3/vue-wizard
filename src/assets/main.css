@@ -1,9 +1,8 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;  /* TODO remove/change after adding media queries */
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
 }
 
@@ -13,6 +12,28 @@ a {
   transition: 0.4s;
   padding: 3px;
 }
-a:hover {
-  background-color: hsla(160, 100%, 37%, 0.2);
+a:hover { background-color: hsla(160, 100%, 37%, 0.2) }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem;
+
+  article {
+    padding: 1rem;
+    background-color: #111;
+    border-radius: 0.5rem;
+  }
 }
+@media (min-width: 20rem) {
+  .grid { grid-template-columns: 1fr 1fr }
+}
+@media (min-width: 40rem) {
+  .grid { grid-template-columns: 1fr 1fr 1fr }
+}
+@media (min-width: 60rem) {
+  .grid { grid-template-columns: 1fr 1fr 1fr 1fr }
+}
+
+.label { color: cadetblue }
