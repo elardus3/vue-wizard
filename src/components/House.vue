@@ -7,23 +7,29 @@ defineProps({
 <template>
   <article>
     <h2>{{ house?.name }}</h2>
-    <p class="label">Founder</p>
-    <p>{{ house?.founder }}</p>
-    <p class="label">Heads</p>
-    <p v-for="head in house?.heads" :key="head.id">
+    <div class="group label">Founder</div>
+    <div>{{ house?.founder }}</div>
+    <div class="group label">Heads</div>
+    <div v-for="head in house?.heads" :key="head.id">
       {{ head.firstName }} {{ head.lastName }}
-    </p>
-    <p class="label">Common room</p>
-    <p>{{ house?.commonRoom }}</p>
-    <p class="label">Animal</p>
-    <p>{{ house?.animal }}</p>
-    <p class="label">Element</p>
-    <p>{{ house?.element }}</p>
-    <p class="label">Ghost</p>
-    <p>{{ house?.ghost }}</p>
-    <p class="label">House colors</p>
-    <p>{{ house?.houseColours }}</p>
-    <p class="label">Traits</p>
-    <p v-for="trait in house?.traits" :key="trait.id">{{ trait.name }}</p>
+    </div>
+    <div class="group label">Common room</div>
+    <div>{{ house?.commonRoom }}</div>
+    <div class="group">
+      <span class="label">Animal</span>&nbsp;
+      <span>{{ house?.animal }}</span>
+    </div>
+    <div class="group">
+      <span class="label">Element</span>&nbsp;
+      <span>{{ house?.element }}</span>
+    </div>
+    <div class="group label">Ghost</div>
+    <div>{{ house?.ghost }}</div>
+    <div class="group label">House colors</div>
+    <div>{{ house?.houseColours }}</div>
+    <div class="group">
+      <span class="label">Traits</span>&nbsp;
+      <span v-for="trait in house?.traits" :key="trait.id">{{ trait.name }}&ensp;</span>
+    </div>
   </article>
 </template>
