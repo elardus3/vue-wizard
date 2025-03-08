@@ -23,8 +23,10 @@ defineProps({
       <span class="label">Element</span>&nbsp;
       <span>{{ house?.element }}</span>
     </div>
-    <div class="group label">Ghost</div>
-    <div>{{ house?.ghost }}</div>
+    <div class="group">
+      <span class="label">Ghost</span>&nbsp;
+      <span>{{ house?.ghost }}</span>
+    </div>
     <div class="group label">House colors</div>
     <div>{{ house?.houseColours }}</div>
     <div class="group">

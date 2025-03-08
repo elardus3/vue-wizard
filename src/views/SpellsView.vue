@@ -15,8 +15,8 @@ const { isPending, isError, data, error } = useQuery({
 </script>
 
 <template>
-  <div v-if="isPending">Loading spells...</div>
-  <div v-else-if="isError">Error: {{ error?.message }}</div>
+  <div v-if="isPending" class="msg">Loading spells...</div>
+  <div v-else-if="isError" class="msg">Error: {{ error?.message }}</div>
   <div v-else>
     <h1>{{ data.length }} Spells</h1>
     <ul>
