@@ -56,13 +56,21 @@
   font-weight: normal;
 }
 
+body,
+input {
+  font-family: system-ui, sans-serif;
+}
+
 body {
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.25;
-  font-family: system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  font-size: 1rem;
 }

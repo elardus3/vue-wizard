@@ -6,7 +6,7 @@ defineProps({
 
 <template>
   <article>
-    <h2>{{ house?.name }}</h2>
+    <h3>{{ house?.name }}</h3>
     <div class="group label">Founder</div>
     <div>{{ house?.founder }}</div>
     <div class="group label">Heads</div>

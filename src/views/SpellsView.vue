@@ -5,11 +5,11 @@ const { isPending, isError, data, error } = useQuery({
   queryKey: ['spells'],
   queryFn: async () => {
     const response = await fetch('https://wizard-world-api.herokuapp.com/Spells');
-    const json = response.json();
-    console.log('json');
-    console.log(json);
-    return json;
-    // return response.json();  // TODO after card slots
+    const promise = response.json();
+    console.log('promise:');  // TODO remove after card slots
+    console.log(promise);     // TODO remove after card slots
+    return promise;
+    // return response.json();  // TODO remove after card slots
   }
 });
 </script>
