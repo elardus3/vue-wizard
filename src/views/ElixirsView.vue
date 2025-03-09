@@ -7,13 +7,18 @@ const { isPending, isError, data, error } = useQuery({
   queryKey: ['elixirs'],
   queryFn: async () => {
     const response = await fetch('https://wizard-world-api.herokuapp.com/Elixirs');
-    const promise = response.json();
-    setTimeout(() => elixirs.value = data?.value.slice(), 1000);
-    return promise;
+    return response.json();
   }
 });
 
 const elixirs = ref([]);
+
+const iid = setInterval(() => {
+  if (data?.value) {
+    clearInterval(iid);
+    elixirs.value = data?.value.slice();
+  }
+}, 100);
 
 function onFilter(ev: InputEvent) {
   const text = (<HTMLInputElement>ev.target).value;
@@ -31,15 +36,3 @@ function onFilter(ev: InputEvent) {
     </div>
   </div>
 </template>
-
-<style scoped>
-.filter {
-  margin-right: 1rem;
-  text-align: right;
-
-  input {
-    background: #aaa;
-    border-width: 0;
-  }
-}
-</style>

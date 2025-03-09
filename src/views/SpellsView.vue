@@ -1,28 +1,38 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
+import { ref } from "vue";
+import Spell from "@/components/Spell.vue";
 
 const { isPending, isError, data, error } = useQuery({
   queryKey: ['spells'],
   queryFn: async () => {
     const response = await fetch('https://wizard-world-api.herokuapp.com/Spells');
-    const promise = response.json();
-    console.log('promise:');  // TODO remove after card slots
-    console.log(promise);     // TODO remove after card slots
-    return promise;
-    // return response.json();  // TODO remove after card slots
+    return response.json();
   }
 });
+
+const spells = ref([]);
+
+const iid = setInterval(() => {
+  if (data?.value) {
+    clearInterval(iid);
+    spells.value = data?.value.slice();
+  }
+}, 100);
+
+function onFilter(ev: InputEvent) {
+  const text = (<HTMLInputElement>ev.target).value;
+  spells.value = data?.value.filter(spell => spell.name.toUpperCase().includes(text.toUpperCase()));
+}
 </script>
 
 <template>
   <div v-if="isPending" class="msg">Loading spells...</div>
   <div v-else-if="isError" class="msg">Error: {{ error?.message }}</div>
   <div v-else>
-    <h1>{{ data.length }} Spells</h1>
-    <ul>
-      <li v-for="spell in data" :key="spell.id">
-        {{ spell.name }}
-      </li>
-    </ul>
+    <p class="filter"><input @input="onFilter"></p>
+    <div class="grid">
+      <Spell v-for="spell in spells" :key="spell.id" :spell="spell" />
+    </div>
   </div>
 </template>
