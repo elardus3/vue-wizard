@@ -13,12 +13,13 @@ const { isPending, isError, data } = useQuery({
 
 const elixirs = ref([]);
 
+// TODO use computed() instead
 const iid = setInterval(() => {
   if (data?.value) {
     clearInterval(iid);
     elixirs.value = data?.value.slice();
   }
-}, 100);
+}, 10);
 
 function onFilter(ev: InputEvent) {
   const text = (<HTMLInputElement>ev.target).value;
