@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { ref } from "vue";
 import Spell from "@/components/Spell.vue";
 
-const { isPending, isError, data, error } = useQuery({
+const { isPending, isError, data } = useQuery({
   queryKey: ['spells'],
   queryFn: async () => {
     const response = await fetch('https://wizard-world-api.herokuapp.com/Spells');
@@ -28,7 +28,7 @@ function onFilter(ev: InputEvent) {
 
 <template>
   <div v-if="isPending" class="msg">Loading spells...</div>
-  <div v-else-if="isError" class="msg">Error: {{ error?.message }}</div>
+  <div v-else-if="isError" class="msg">Unable to load spells,<br>please try again later.</div>
   <div v-else>
     <p class="filter"><input @input="onFilter"></p>
     <div class="grid">

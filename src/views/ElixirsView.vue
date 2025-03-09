@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/vue-query'
 import { ref } from "vue";
 import Elixir from "@/components/Elixir.vue";
 
-const { isPending, isError, data, error } = useQuery({
+const { isPending, isError, data } = useQuery({
   queryKey: ['elixirs'],
   queryFn: async () => {
     const response = await fetch('https://wizard-world-api.herokuapp.com/Elixirs');
@@ -28,7 +28,7 @@ function onFilter(ev: InputEvent) {
 
 <template>
   <div v-if="isPending" class="msg">Loading elixirs...</div>
-  <div v-else-if="isError" class="msg">Error: {{ error?.message }}</div>
+  <div v-else-if="isError" class="msg">Unable to load elixirs,<br>please try again later.</div>
   <div v-else>
     <p class="filter"><input @input="onFilter"></p>
     <div class="grid">
