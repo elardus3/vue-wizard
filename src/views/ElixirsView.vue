@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query'
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Elixir from "@/components/Elixir.vue";
 
 const { isPending, isError, data } = useQuery({
@@ -11,19 +11,22 @@ const { isPending, isError, data } = useQuery({
   }
 });
 
-const elixirs = ref([]);
+const text = ref('');
 
-// TODO use computed() instead
-const iid = setInterval(() => {
+const elixirs = computed(() => {
+  let result = [];
   if (data?.value) {
-    clearInterval(iid);
-    elixirs.value = data?.value.slice();
+    if (text.value.length >= 1) {
+      result = data?.value.filter(elixir => elixir.name.toUpperCase().includes(text.value.toUpperCase()));
+    } else {
+      result = data?.value.slice();
+    }
   }
-}, 10);
+  return result;
+});
 
-function onFilter(ev: InputEvent) {
-  const text = (<HTMLInputElement>ev.target).value;
-  elixirs.value = data?.value.filter(elixir => elixir.name.toUpperCase().includes(text.toUpperCase()));
+function onFilter(ev: Event) {
+  text.value = (<HTMLInputElement>ev.target).value;
 }
 </script>
 
@@ -31,7 +34,7 @@ function onFilter(ev: InputEvent) {
   <div v-if="isPending" class="msg">Loading elixirs...</div>
   <div v-else-if="isError" class="msg">Unable to load elixirs,<br>please try again later.</div>
   <div v-else>
-    <p class="filter"><input @input="onFilter"></p>
+    <p class="filter"><input @input="onFilter($event)" placeholder="Search..."></p>
     <div class="grid">
       <Elixir v-for="elixir in elixirs" :key="elixir.id" :elixir="elixir" />
     </div>
