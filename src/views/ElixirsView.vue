@@ -17,7 +17,7 @@ const elixirs = computed(() => {
   let result = [];
   if (data?.value) {
     if (text.value.length >= 1) {
-      result = data?.value.filter(elixir => elixir.name.toUpperCase().includes(text.value.toUpperCase()));
+      result = data?.value.filter((elixir: ElixirT) => elixir.name.toUpperCase().includes(text.value.toUpperCase()));
     } else {
       result = data?.value.slice();
     }
@@ -27,6 +27,19 @@ const elixirs = computed(() => {
 
 function onFilter(ev: Event) {
   text.value = (<HTMLInputElement>ev.target).value;
+}
+
+export interface ElixirT {
+  id: string;
+  name: string;
+  effect: string;
+  difficulty: string;
+  manufacturer: string;
+  characteristics: string;
+  time: string;
+  sideEffects: string;
+  ingredients: [];
+  inventors: [];
 }
 </script>
 

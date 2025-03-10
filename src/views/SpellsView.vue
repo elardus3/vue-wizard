@@ -17,7 +17,7 @@ const spells = computed(() => {
   let result = [];
   if (data?.value) {
     if (text.value.length >= 1) {
-      result = data?.value.filter(spell => spell.name.toUpperCase().includes(text.value.toUpperCase()));
+      result = data?.value.filter((spell: SpellT) => spell.name.toUpperCase().includes(text.value.toUpperCase()));
     } else {
       result = data?.value.slice();
     }
@@ -27,6 +27,16 @@ const spells = computed(() => {
 
 function onFilter(ev: Event) {
   text.value = (<HTMLInputElement>ev.target).value;
+}
+
+export interface SpellT {
+  id: string;
+  name: string;
+  effect: string;
+  incantation: string;
+  type: string;
+  light: string;
+  creator: string;
 }
 </script>
 
