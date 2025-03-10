@@ -16,11 +16,9 @@ const text = ref('');
 const spells = computed(() => {
   let result = [];
   if (data?.value) {
-    if (text.value.length >= 1) {
-      result = data?.value.filter((spell: SpellT) => spell.name.toUpperCase().includes(text.value.toUpperCase()));
-    } else {
-      result = data?.value.slice();
-    }
+    result = text.value.length >= 1
+      ? data.value.filter((spell: SpellT) => spell.name.toUpperCase().includes(text.value.toUpperCase()))
+      : data.value.slice();
   }
   return result;
 });

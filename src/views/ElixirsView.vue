@@ -16,11 +16,9 @@ const text = ref('');
 const elixirs = computed(() => {
   let result = [];
   if (data?.value) {
-    if (text.value.length >= 1) {
-      result = data?.value.filter((elixir: ElixirT) => elixir.name.toUpperCase().includes(text.value.toUpperCase()));
-    } else {
-      result = data?.value.slice();
-    }
+    result = text.value.length >= 1
+      ? data.value.filter((elixir: ElixirT) => elixir.name.toUpperCase().includes(text.value.toUpperCase()))
+      : data.value.slice();
   }
   return result;
 });
