@@ -22,9 +22,11 @@ input {
   transition: width 0.3s ease-in-out;
 
   &:focus {
-    width: 97%;
+    width: 95%;
   }
 }
+
+button { padding: 0.5rem }
 
 .msg {
   margin-top: 2rem;
@@ -40,7 +42,13 @@ input {
   article {
     padding: 1rem;
     background-color: #111;
+    border: 1px solid transparent;
     border-radius: 0.5rem;
+    transition: 0.3s;
+
+    &:hover {
+      border-color: hsla(160, 100%, 37%, 0.5);
+    }
   }
 }
 @media (min-width: 25rem) {
@@ -57,4 +65,4 @@ input {
 
 .label { color: cadetblue }
 
-.filter { margin: 1rem 0 0 1rem }
+.filter { margin: 1rem 0 0 2rem }

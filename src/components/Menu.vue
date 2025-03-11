@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
+import { useLoginStore } from "@/stores/login.ts";
+
+const login = useLoginStore();
 </script>
 
 <template>
   <nav>
-    <RouterLink to="/">Houses</RouterLink>
-    <RouterLink to="/elixirs">Elixirs</RouterLink>
-    <RouterLink to="/spells">Spells</RouterLink>
+    <RouterLink to="/">{{ login.loggedIn ? 'Logout' : 'Login' }}</RouterLink>
+    <RouterLink to="/houses">Houses</RouterLink>
+    <RouterLink v-if="login.loggedIn" to="/spells">Spells</RouterLink>
+    <RouterLink v-if="login.admin" to="/elixirs">Elixirs</RouterLink>
   </nav>
 </template>
 
@@ -27,6 +31,9 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   display: inline-block;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
+}
+@media (min-width: 40rem) {
+  nav a { padding: 0 1rem }
 }
 </style>
