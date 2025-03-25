@@ -7,28 +7,27 @@
 
 a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: darkgreen;
   transition: 0.3s;
   padding: 3px;
 }
 a:hover { background-color: hsla(160, 100%, 37%, 0.2) }
 
 input,
-button { font-size: 1rem }
+button {
+  padding: 0.375rem 0.5rem;
+  font-size: 1rem;
+}
 
 input {
   width: 5rem;
   border-radius: 0.25rem;
-  border-width: 0;
-  background: #aaa;
+  border: 1px solid #aaa;
+  background: #eee;
   transition: width 0.3s ease-in-out;
 
-  &:focus {
-    width: 95%;
-  }
+  &:focus { width: 95% }
 }
-
-button { padding: 0.375rem 0.5rem }
 
 .msg {
   margin-top: 2rem;
@@ -43,7 +42,7 @@ button { padding: 0.375rem 0.5rem }
 
   article {
     padding: 1rem;
-    background-color: #111;
+    background-color: #eee;
     border: 1px solid transparent;
     border-radius: 0.5rem;
     transition: 0.3s;
@@ -65,6 +64,13 @@ button { padding: 0.375rem 0.5rem }
 
 .group { margin-top: 0.25rem }
 
-.label { color: lightblue }
+.label { color: dodgerblue }
 
 .filter { margin: 1rem 0 0 2rem }
+
+@media (prefers-color-scheme: dark) {
+  a { color: hsla(160, 100%, 37%, 1) }
+  input { background: #ccc }
+  .grid article { background-color: #111 }
+  .label { color: lightblue }
+}
